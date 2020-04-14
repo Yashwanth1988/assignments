@@ -20,24 +20,23 @@
 		<script type="text/javascript">
 			var dragDropApi = new DragDropApi()
 			document.addEventListener('DOMContentLoaded', function(){
-				console.log('am ready')
 				var containerElement = document.querySelector('#container')
 				var draggbleElement = document.querySelector('#div_button')
 				var dragStart = false
 				draggbleElement.addEventListener("mousedown", function(event){
 					dragStart = true
-					dragDropApi.onDrag('mousedown', event, draggbleElement)
+					dragDropApi.onDrag(event, draggbleElement)
 				})
 
 				document.addEventListener("mousemove", function(event){
 					if(dragStart) {
-						dragDropApi.onDrag('mousemove', event, draggbleElement)
+						dragDropApi.onDrag(event, draggbleElement)
 					}
 				})
 
 				document.addEventListener("mouseup", function(event){
 					dragStart = false
-					dragDropApi.onDrop('mouseup', event, draggbleElement, containerElement)
+					dragDropApi.onDrop(event, draggbleElement, containerElement)
 				})
 
 			})
@@ -58,7 +57,10 @@
 
 		<div id="container">
 		</div>
-		<div id="div_button">
+		<div id="div_button" isDragable="true">
+		</div>
+		<div id="div_button_1" isDragable="true">
+			Test
 		</div>
 	</body>
 </html>
