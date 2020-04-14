@@ -1,3 +1,7 @@
+/*
+	yQuery version 1.0.0 released April 14th 2020
+	Author: Bathini Yashwanth
+*/
 function init(selector){
 
 	this.node = document.querySelector(selector)
