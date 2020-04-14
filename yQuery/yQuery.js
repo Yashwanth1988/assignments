@@ -1,6 +1,8 @@
 /*
-	yQuery version 1.0.0 released April 14th 2020
+	yQuery - a DOM utility library
 	Author: Bathini Yashwanth
+	version: 1.0.0
+	release date: April 14th 2020
 */
 function init(selector){
 
