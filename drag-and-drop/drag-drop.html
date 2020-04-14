@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Drag Drop</title>
+		<style>
+			#container{
+				background: #ccc;
+				border:1px solid #000;
+				height: 500px;
+				width:500px;
+			}
+
+			#div_button{
+			   	background: red;
+			   	border:2px solid #000;
+				height: 50px;
+				width:50px;
+			}
+		</style>
+		<script type="text/javascript" src="drag-drop-api.js"></script>
+		<script type="text/javascript">
+			var dragDropApi = new DragDropApi()
+			document.addEventListener('DOMContentLoaded', function(){
+				console.log('am ready')
+				var containerElement = document.querySelector('#container')
+				var draggbleElement = document.querySelector('#div_button')
+				var dragStart = false
+				draggbleElement.addEventListener("mousedown", function(event){
+					dragStart = true
+					dragDropApi.onDrag('mousedown', event, draggbleElement)
+				})
+
+				document.addEventListener("mousemove", function(event){
+					if(dragStart) {
+						dragDropApi.onDrag('mousemove', event, draggbleElement)
+					}
+				})
+
+				document.addEventListener("mouseup", function(event){
+					dragStart = false
+					dragDropApi.onDrop('mouseup', event, draggbleElement, containerElement)
+				})
+
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+		<li>create droppable container</li>
+		<li>create draggble component (div)</li>
+		<li>do some math with position <br>
+			1. tracking mouse cursor <br>
+			2. identifying the container <br>
+			3. do these things on mouse release/press <br>
+			4. try using debounce to avoid pixel to pixel or very frequent calculations <br>
+		</li>
+		</ul>
+
+
+		<div id="container">
+		</div>
+		<div id="div_button">
+		</div>
+	</body>
+</html>

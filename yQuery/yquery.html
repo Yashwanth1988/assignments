@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>yQuery</title>
+		
+		<script type="text/javascript" src="yQuery.js"></script>
+		<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function(){
+			var container = yQuery("#container")
+			yQuery('#container').find('#div_button').height(200).width(200).border(3).backgroundColor('skyblue')
+		})
+		</script>
+	</head>
+	<body>
+		<h1>yQuery</h1>
+		<div id="container">	
+			Hai
+			<div id="div_button">
+				Helo
+				<div id="div_test">
+				   test
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
