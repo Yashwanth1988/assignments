@@ -15,31 +15,16 @@
 				height: 50px;
 				width:50px;
 			}
+			#div_button_1{
+			   	background: green;
+			   	border:2px solid #000;
+				height: 50px;
+				width:50px;
+			}
 		</style>
 		<script type="text/javascript" src="drag-drop-api.js"></script>
 		<script type="text/javascript">
 			var dragDropApi = new DragDropApi()
-			document.addEventListener('DOMContentLoaded', function(){
-				var containerElement = document.querySelector('#container')
-				var draggbleElement = document.querySelector('#div_button')
-				var dragStart = false
-				draggbleElement.addEventListener("mousedown", function(event){
-					dragStart = true
-					dragDropApi.onDrag(event, draggbleElement)
-				})
-
-				document.addEventListener("mousemove", function(event){
-					if(dragStart) {
-						dragDropApi.onDrag(event, draggbleElement)
-					}
-				})
-
-				document.addEventListener("mouseup", function(event){
-					dragStart = false
-					dragDropApi.onDrop(event, draggbleElement, containerElement)
-				})
-
-			})
 		</script>
 	</head>
 	<body>
@@ -55,12 +40,21 @@
 		</ul>
 
 
-		<div id="container">
+		<div id="container" onmouseup="dragDropApi.onDrop()"></div>
+
+		<div id="div_button"
+					 onmouseup="dragDropApi.onDragStop()"
+					 onmousedown="dragDropApi.onDragStart(event)"
+					 onmousemove="dragDropApi.onDrag()">
+			Test1
 		</div>
-		<div id="div_button" isDragable="true">
+
+		<div id="div_button_1"
+				 onmouseup="dragDropApi.onDragStop()"
+				 onmousedown="dragDropApi.onDragStart(event)"
+				 onmousemove="dragDropApi.onDrag()">
+			Test2
 		</div>
-		<div id="div_button_1" isDragable="true">
-			Test
-		</div>
+		
 	</body>
 </html>
