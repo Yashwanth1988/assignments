@@ -5,8 +5,10 @@
 			#container{
 				background: #ccc;
 				border:1px solid #000;
-				height: 500px;
-				width:500px;
+				height: 200px;
+				width:200px;
+				position: relative;
+				top: 150px;
 			}
 
 			#div_button{
@@ -15,50 +17,42 @@
 				height: 50px;
 				width:50px;
 			}
+			#div_button_1{
+			   	background: green;
+			   	border:2px solid #000;
+			   	border-radius: 3px;
+				height: 50px;
+				width: 50px;
+			}
+			.draggables{
+				position: absolute;
+				left : 20px;
+				top:20px;
+				border: 1px solid #ccc;
+				padding: 5px;
+			}
 		</style>
 		<script type="text/javascript" src="drag-drop-api.js"></script>
 		<script type="text/javascript">
 			var dragDropApi = new DragDropApi()
-			document.addEventListener('DOMContentLoaded', function(){
-				console.log('am ready')
-				var containerElement = document.querySelector('#container')
-				var draggbleElement = document.querySelector('#div_button')
-				var dragStart = false
-				draggbleElement.addEventListener("mousedown", function(event){
-					dragStart = true
-					dragDropApi.onDrag('mousedown', event, draggbleElement)
-				})
-
-				document.addEventListener("mousemove", function(event){
-					if(dragStart) {
-						dragDropApi.onDrag('mousemove', event, draggbleElement)
-					}
-				})
-
-				document.addEventListener("mouseup", function(event){
-					dragStart = false
-					dragDropApi.onDrop('mouseup', event, draggbleElement, containerElement)
-				})
-
-			})
 		</script>
 	</head>
-	<body>
-		<ul>
-		<li>create droppable container</li>
-		<li>create draggble component (div)</li>
-		<li>do some math with position <br>
-			1. tracking mouse cursor <br>
-			2. identifying the container <br>
-			3. do these things on mouse release/press <br>
-			4. try using debounce to avoid pixel to pixel or very frequent calculations <br>
-		</li>
-		</ul>
+	<body onmousemove="dragDropApi.onDrag()">
+		<div id="container" onmouseup="dragDropApi.onDrop(event)"></div>
+		<div class="draggables">
+			<div id="div_button"
+						 onmouseup="dragDropApi.onDragStop()"
+						 onmousedown="dragDropApi.onDragStart(event)"
+						 >
+				Test1
+			</div>
 
-
-		<div id="container">
-		</div>
-		<div id="div_button">
+			<div id="div_button_1"
+					 onmouseup="dragDropApi.onDragStop()"
+					 onmousedown="dragDropApi.onDragStart(event)"
+					>
+				Test2
+			</div>
 		</div>
 	</body>
 </html>
