@@ -5,8 +5,10 @@
 			#container{
 				background: #ccc;
 				border:1px solid #000;
-				height: 500px;
-				width:500px;
+				height: 200px;
+				width:200px;
+				position: relative;
+				top: 150px;
 			}
 
 			#div_button{
@@ -18,8 +20,16 @@
 			#div_button_1{
 			   	background: green;
 			   	border:2px solid #000;
+			   	border-radius: 3px;
 				height: 50px;
-				width:50px;
+				width: 50px;
+			}
+			.draggables{
+				position: absolute;
+				left : 20px;
+				top:20px;
+				border: 1px solid #ccc;
+				padding: 5px;
 			}
 		</style>
 		<script type="text/javascript" src="drag-drop-api.js"></script>
@@ -27,34 +37,22 @@
 			var dragDropApi = new DragDropApi()
 		</script>
 	</head>
-	<body>
-		<ul>
-		<li>create droppable container</li>
-		<li>create draggble component (div)</li>
-		<li>do some math with position <br>
-			1. tracking mouse cursor <br>
-			2. identifying the container <br>
-			3. do these things on mouse release/press <br>
-			4. try using debounce to avoid pixel to pixel or very frequent calculations <br>
-		</li>
-		</ul>
+	<body onmousemove="dragDropApi.onDrag()">
+		<div id="container" onmouseup="dragDropApi.onDrop(event)"></div>
+		<div class="draggables">
+			<div id="div_button"
+						 onmouseup="dragDropApi.onDragStop()"
+						 onmousedown="dragDropApi.onDragStart(event)"
+						 >
+				Test1
+			</div>
 
-
-		<div id="container" onmouseup="dragDropApi.onDrop()"></div>
-
-		<div id="div_button"
+			<div id="div_button_1"
 					 onmouseup="dragDropApi.onDragStop()"
 					 onmousedown="dragDropApi.onDragStart(event)"
-					 onmousemove="dragDropApi.onDrag()">
-			Test1
+					>
+				Test2
+			</div>
 		</div>
-
-		<div id="div_button_1"
-				 onmouseup="dragDropApi.onDragStop()"
-				 onmousedown="dragDropApi.onDragStart(event)"
-				 onmousemove="dragDropApi.onDrag()">
-			Test2
-		</div>
-		
 	</body>
 </html>
