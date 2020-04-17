@@ -19,23 +19,19 @@ function DragDropApi(){
 
 		var { left, right, top, bottom } = getCoordinates(containerElement)
 
-		if((event.clientX < left || event.clientX > right)
-				|| (event.clientY < top || event.clientY > bottom)
+		if((event.clientX > left && event.clientX < right)
+				&& (event.clientY > top && event.clientY < bottom)
 			){
-			this.currentElement.style.position = 'absolute'
-			this.currentElement.style.left = left
-			this.currentElement.style.top = top
 			containerElement.dispatchEvent(new Event('mouseup', {bubbles: true}))
-		}
+		} 
 
-		containerElement.dispatchEvent(new Event('mouseup', {bubbles: true}))
 	}
 
 	function moveTo(element){
 		element.style.cursor = 'move'
 		element.style.position = 'absolute'
-		element.style.left = event.clientX - element.offsetWidth + 6 + 'px'
-		element.style.top = event.clientY - element.offsetHeight + 6 + 'px'
+		element.style.left = event.clientX - element.offsetWidth + 'px'
+		element.style.top = event.clientY - element.offsetHeight + 'px'
 	}
 
 	this.onDrop = function(event){
