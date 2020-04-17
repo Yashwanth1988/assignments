@@ -6,11 +6,11 @@
 		<script type="text/javascript">
 			document.addEventListener('DOMContentLoaded', function(){
 				var searchInput = document.querySelector("#search")
-				searchInput.addEventListener('input', function(event){
-					debounce(function(){
-						console.log('text', event.target.value)
-					}, 3000)()
-				})
+                var executedFn = debounce(function(e){
+						console.log('text', e.target.value)
+					},1500)
+
+				searchInput.addEventListener('input', function(event){ executedFn(event) })
 			})
 		</script>
 	</head>

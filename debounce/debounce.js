@@ -1,16 +1,11 @@
 
-function debounce(callback, timeout, event){
+function debounce(callback, timeout){
 
-	//var now = Date.now()
-	//var nextNow = Date.now()
 	var timeoutId
-	return function(){
+	return function(e){
 		clearTimeout(timeoutId)
 		timeoutId = setTimeout(function(){
-			//nextNow = Date.now()
-			//if((nextNow - now) >= timeout){
-				callback()
-			//}
+			callback(e)
 		}, timeout)
 	}
 	
